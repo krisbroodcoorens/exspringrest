@@ -24,8 +24,7 @@ public class TestApiPersonService
 	{
 		int searchId = 1;
 		String firstName ="John";
-		Person myPerson = myApiPersonService.findPerson(searchId);
-		System.out.println("myPerson: " +myPerson);
+		Person myPerson = myApiPersonService.findPerson(searchId);		
 		assertEquals(myPerson.getFirstName(), firstName);
 	}
 }

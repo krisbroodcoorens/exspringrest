@@ -14,11 +14,6 @@ public class ApiPersonService implements PersonService
 {
     
 	@Autowired
-	PersonService myPersonService;
-	@Autowired
-	CourseService myCourseService;
-	
-	@Autowired
 	private RestTemplate myRestTemplate;
 	private String myBaseUri = "http://localhost:8085/exercise/api/persons";
 
@@ -30,31 +25,32 @@ public class ApiPersonService implements PersonService
 	}
 
 	@Override
-	public Person findPerson(String emailAddress, String passWord) 
-	{
+	public ArrayList<Person> getAllPersons() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Person findPerson(String emailAddress, String passWord) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void addPerson(Person p) throws IOException {
-		myPersonService.addPerson(p);		
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
-	public void deletePerson(int id) throws PersonCanNotBeDeletedException 
-	{
-		myPersonService.deletePerson(id);		
+	public void deletePerson(int id) throws PersonCanNotBeDeletedException {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
-	public void changePassword(Person p, String newPswd) throws IOException 
-	{
-		myPersonService.changePassword(p, newPswd);		
-	}
-
-	@Override
-	public ArrayList<Person> getAllPersons() 
-	{
-		return null;
+	public void changePassword(Person p, String newPswd) throws IOException {
+		// TODO Auto-generated method stub
+		
 	}
 }
