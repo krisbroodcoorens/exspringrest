@@ -22,45 +22,44 @@ import be.abis.exercise.model.Person;
 import be.abis.exercise.service.PersonService;
 
 @RestController
+@RequestMapping("persons")
 public class ApiController {
 
 	@Autowired 
 	PersonService myPersonService;
 	
-	@GetMapping(value="/person", params="id")
-    public Person findPersonById(@RequestParam("id") int id)
+	@GetMapping("{id}")
+    public Person findPersonById(@PathVariable("id") int id)
 	{
     	return myPersonService.findPerson(id);    	
     }
 
-	@GetMapping(value="/person")
+	@GetMapping("")
 	public ArrayList<Person> getAllPersons(){
 		return myPersonService.getAllPersons();
 	}
 	
-	@GetMapping(value="/person", params="emailAddress, passWord")
-    public Person findPersonByMailAndPassWord(@RequestParam("emailAddress") String emailAddress, @RequestParam("passWord") String passWord)
+	@PostMapping("/login")
+    public Person findPersonByMailAndPassWord(@RequestBody Login login)
 	{
-    	return myPersonService.findPerson(emailAddress, passWord);    	
+    	return myPersonService.findPerson(login.getEmailAddress(), login.getPassWord());    	
     }
 	
-	@PostMapping("/person")
-    public void addPerson(@RequestBody Person person) throws IOException 
+	@PostMapping("")
+    public void addPerson(@RequestBody Person person) throws Exception 
 	{
-		//System.out.println("Person: " +person.toString());
 		myPersonService.addPerson(person);
     }
 	
-	@DeleteMapping(value="/person", params="id")
-    public void deletePerson(@RequestParam("id") int id) throws Exception 
+	@DeleteMapping("{id}")
+    public void deletePerson(@PathVariable("id") int id) throws Exception 
 	{
 		myPersonService.deletePerson(id);
     }	
 	
-	@PutMapping(value="/person")
-    public void changePassword(@RequestBody int id, @RequestBody Person person) throws IOException  
+	@PutMapping("{id}")
+    public void changePassword(@PathVariable("id") int id, @RequestBody Person person) throws IOException  
 	{
-		System.out.println("Person: " +person.toString());
 		myPersonService.changePassword(myPersonService.findPerson(id), person.getPassword());
     }
 }

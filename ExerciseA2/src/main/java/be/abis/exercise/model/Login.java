@@ -4,6 +4,7 @@ public class Login
 {
 	public String emailAddress;
 	public String passWord;
+	
 	public Login(String emailAddress, String passWord) {
 		super();
 		this.emailAddress = emailAddress;
