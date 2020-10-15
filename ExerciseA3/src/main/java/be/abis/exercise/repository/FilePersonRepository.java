@@ -174,7 +174,7 @@ public class FilePersonRepository implements PersonRepository {
 		StringBuilder sb = new StringBuilder();
 		int nr = p.getCompany().getAddress().getNr();
 		sb.append(p.getPersonId() + ";").append(p.getFirstName() + ";").append(p.getLastName() + ";")
-				.append((p.getBirthDay() != LocalDate.parse("01/01/0001", dateFormatter) ? p.getBirthDay() : null) + ";").append(p.getEmailAddress() + ";")
+				.append((p.getBirthDay().format(dateFormatter) != ("01/01/0001") ? p.getBirthDay() : null) + ";").append(p.getEmailAddress() + ";")
 				.append(p.getPassword() + ";").append(p.getLanguage().toLowerCase() + ";")
 				.append(p.getCompany().getName() + ";").append(p.getCompany().getTelephoneNumber() + ";")
 				.append(p.getCompany().getVatNr() + ";").append(p.getCompany().getAddress().getStreet() + ";")
