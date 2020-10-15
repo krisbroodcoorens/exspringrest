@@ -26,7 +26,21 @@ public class Person {
 	@Valid
 	private Company company;
 	
-	
+	public Person ()
+	{		
+	}
+		
+	public Person(Person person) {
+		super();
+		this.personId = person.getPersonId();
+		this.lastName = person.getLastName();
+		this.age = person.getAge();
+		this.emailAddress = person.getEmailAddress();
+		this.password = person.getPassword();
+		this.language = person.getLanguage();
+		this.company = person.getCompany();
+	}
+
 	public int getPersonId() {
 		return personId;
 	}

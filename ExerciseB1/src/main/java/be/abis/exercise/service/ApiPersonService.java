@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import be.abis.exercise.exception.PersonCanNotBeDeletedException;
+import be.abis.exercise.model.Login;
 import be.abis.exercise.model.Person;
 
 @Service
@@ -31,9 +32,10 @@ public class ApiPersonService implements PersonService
 	}
 
 	@Override
-	public Person findPerson(String emailAddress, String passWord) {
-		// TODO Auto-generated method stub
-		return null;
+	public Person findPersonByLogin(Login login) 
+	{
+		myRestTemplate.postForObject(myBaseUri+"/login", login, Person.class);
+		return new Person();
 	}
 
 	@Override

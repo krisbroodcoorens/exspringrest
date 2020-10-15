@@ -12,7 +12,16 @@ public class Login {
 	@NotBlank(message="password cannot be empty")
 	private String password;
 	
-
+	public Login()
+	{		
+	}
+	
+	public Login(String email, String password)
+	{
+		this.email = email;
+		this.password = password;
+	}
+	
 	public String getEmail() {
 		return email;
 	}

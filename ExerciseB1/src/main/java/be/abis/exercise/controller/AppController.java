@@ -41,7 +41,7 @@ public class AppController {
 	
 	@GetMapping("/")
 	public String login(Model model){
-		model.addAttribute("login",new Login());
+		model.addAttribute("login", new Login());
 		return "login";
 	}
 	
@@ -50,7 +50,7 @@ public class AppController {
 		if (result.hasErrors()) {
 			return "login";
 		}
-		loggedInPerson =trainingService.findPerson(login.getEmail(),login.getPassword());
+		loggedInPerson =trainingService.findPersonByLogin(login);
 		if (loggedInPerson==null) {
 		   result.reject("email", "Login failed, try again");
 		   return "login";

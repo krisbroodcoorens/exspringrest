@@ -55,7 +55,9 @@ public class ApiController {
 	@PostMapping("/login")
     public Person findPersonByMailAndPassWord(@RequestBody Login login)
 	{
-    	return myPersonService.findPerson(login.getEmailAddress(), login.getPassWord());    	
+    	System.out.println("emailaddress: " +login.getEmailAddress());
+    	System.out.println("password: " +login.getPassWord());
+		return myPersonService.findPerson(login.getEmailAddress(), login.getPassWord());    	
     }
 	
 	@PostMapping("")

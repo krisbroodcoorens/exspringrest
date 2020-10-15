@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import be.abis.exercise.exception.EnrollException;
 import be.abis.exercise.exception.PersonCanNotBeDeletedException;
 import be.abis.exercise.model.Course;
+import be.abis.exercise.model.Login;
 import be.abis.exercise.model.Person;
 
 @Service
@@ -20,12 +21,12 @@ public class AbisTrainingService implements TrainingService {
 	private CourseService courseService;
 	
 	@Autowired
-	private PersonService personService;	
+	private PersonService personService;
 	
 	@Override
 	public CourseService getCourseService() {
-		return courseService;	}
-
+		return courseService;
+	}
 
 	public void setCourseService(CourseService courseService) {
 		this.courseService = courseService;
@@ -33,32 +34,27 @@ public class AbisTrainingService implements TrainingService {
 
 	@Override
 	public ArrayList<Person> getAllPersons() {
-		return null;
+		return personService.getAllPersons();
 	}
 
 	@Override
-	public Person findPerson(int id) {
-		return null;
-	}
-
-	@Override
-	public Person findPerson(String emailAddress, String passWord) {
-		return null;
+	public Person findPerson(int id)  {
+		return personService.findPerson(id);
 	}
 
 	@Override
 	public void addPerson(Person p) throws IOException {
-		
+		personService.addPerson(p);
 	}
 
 	@Override
 	public void deletePerson(int id) throws PersonCanNotBeDeletedException {
-				
+		personService.deletePerson(id);	
 	}
 
 	@Override
 	public void changePassword(Person p, String newPswd) throws IOException {
-				
+		personService.changePassword(p,newPswd);		
 	}
 
 	@Override
@@ -73,9 +69,8 @@ public class AbisTrainingService implements TrainingService {
 
 	}
 
-
-
-
-
-
+	@Override
+	public Person findPersonByLogin(Login login) {
+		return personService.findPersonByLogin(login);
+	}
 }
